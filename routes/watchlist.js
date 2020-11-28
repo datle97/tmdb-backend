@@ -15,7 +15,6 @@ router.post("/add", (req, res) => {
   const movie = req.body.movie;
   Movie.findOne({ userId, id: movie.id })
     .then((findMovie) => {
-      // không cho add movie đã tồn tại trong watchlist (chỉ cần khi người dùng click quá nhanh)
       if (findMovie) {
         res.status(400).json({ message: "added" });
       } else {
